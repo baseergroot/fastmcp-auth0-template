@@ -47,11 +47,15 @@ server.addTool({
   },
 });
 
-server.start({
-  transportType: "httpStream",
-  httpStream: {
-    port: 8000,
-  },
-});
+// server.start({
+//   transportType: "httpStream",
+//   httpStream: {
+//     port: 8000,
+//   },
+// });
 
-export default server
+// export default server
+
+export default {
+  fetch: (request, env, ctx) => app.fetch(request, env, ctx)
+};
