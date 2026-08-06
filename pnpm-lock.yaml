@@ -14,6 +14,9 @@ importers:
       fastmcp:
         specifier: ^4.12.5
         version: 4.12.5(ajv-formats@3.0.1(ajv@8.20.0))(ajv@8.20.0)(jose@6.2.8)
+      hono:
+        specifier: ^4.13.0
+        version: 4.13.0
       zod:
         specifier: ^4.4.3
         version: 4.4.3

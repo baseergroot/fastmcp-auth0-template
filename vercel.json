@@ -1,0 +1,7 @@
+{
+  "version": 2,
+  "maxDuration": 300,
+  "rewrites": [
+    { "source": "/(.*)", "destination": "/api" }
+  ]
+}

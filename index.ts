@@ -1,6 +1,7 @@
 import { FastMCP, OAuthProvider } from "fastmcp";
 import { z } from "zod"; // Or any validation library that supports Standard Schema
 import "dotenv/config"
+import { handle } from "hono/vercel";
 
 const {authorizationEndpoint, baseUrl, clientId, clientSecret, tokenEndpoint} = {
   authorizationEndpoint: `https://${process.env.AUTH0_ENDPOINT}/authorize`,
@@ -53,5 +54,10 @@ server.start({
     port: 8000,
   },
 });
+
+export const GET = handle(app);
+export const POST = handle(app);
+export const OPTIONS = handle(app);
+
 
 export default server
