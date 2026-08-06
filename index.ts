@@ -2,14 +2,25 @@ import { FastMCP, OAuthProvider } from "fastmcp";
 import { z } from "zod"; // Or any validation library that supports Standard Schema
 import "dotenv/config"
 
-
-const auth = new OAuthProvider({
+const {authorizationEndpoint, baseUrl, clientId, clientSecret, tokenEndpoint} = {
   authorizationEndpoint: `https://${process.env.AUTH0_ENDPOINT}/authorize`,
   baseUrl: process.env.BASE_URL,
   clientId: process.env.AUTH0_CLIENT_ID,
   clientSecret: process.env.AUTH0_CLIENT_SECRET,
-  scopes: ["openid", "profile"],
   tokenEndpoint: `https://${process.env.AUTH0_ENDPOINT}/oauth/token`,
+}
+
+if(!authorizationEndpoint || !baseUrl || !clientId || !clientSecret || !tokenEndpoint) {
+  throw new Error("Missing required environment variables")
+}
+
+const auth = new OAuthProvider({
+  authorizationEndpoint,
+  baseUrl,
+  clientId,
+  clientSecret,
+  scopes: ["openid", "profile"],
+  tokenEndpoint
 })
 
 const server = new FastMCP({
