@@ -20,7 +20,7 @@ const server = new FastMCP({
 
 const app = server.getApp()
 
-app.get("/health", (c) => {
+app.get("/", (c) => {
   return c.json({ message: "Hello World" })
 })
 
