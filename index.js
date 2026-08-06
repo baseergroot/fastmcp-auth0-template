@@ -1,18 +1,11 @@
-import { FastMCP, GoogleProvider, OAuthProvider } from "fastmcp";
+import { FastMCP, OAuthProvider } from "fastmcp";
 import { z } from "zod"; // Or any validation library that supports Standard Schema
 import "dotenv/config"
-
-console.log({
-  client_id: process.env.AUTH0_CLIENT_ID,
-  client_secret: process.env.AUTH0_CLIENT_SECRET,
-  audience: process.env.AUTH0_AUDIENCE,
-  endpoint: process.env.AUTH0_ENDPOINT,
-})
 
 
 const auth = new OAuthProvider({
   authorizationEndpoint: `https://${process.env.AUTH0_ENDPOINT}/authorize`,
-  baseUrl: "http://localhost:8000",
+  baseUrl: process.env.BASE_URL,
   clientId: process.env.AUTH0_CLIENT_ID,
   clientSecret: process.env.AUTH0_CLIENT_SECRET,
   scopes: ["openid", "profile"],
@@ -43,3 +36,5 @@ server.start({
     port: 8000,
   },
 });
+
+export default server
