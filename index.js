@@ -18,6 +18,12 @@ const server = new FastMCP({
   version: "1.0.0",
 });
 
+const app = server.getApp()
+
+app.get("/health", (c) => {
+  return c.json({ message: "Hello World" })
+})
+
 server.addTool({
   name: "add",
   description: "Add two numbers",
